@@ -1,0 +1,9 @@
+/app/cache/*
+!app/cache/.gitkeep
+/app/logs/*
+!app/logs/.gitkeep
+/app/phpunit.xml
+/bin/
+/web/bundles/
+/web/upload/
+.idea

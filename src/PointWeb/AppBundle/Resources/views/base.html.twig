@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|getRef('title') }}</title>
+    <meta name="description"
+          content="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|getRef('description') }}"/>
+    <meta name="keywords"
+          content="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|getRef('keywords') }}"/>
+    <!--<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>-->
+
+    <script src="{{ asset('jquery-ui-1.11.4.custom/external/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui-1.11.4.custom/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.anti-ie7.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-1.2.1.js') }}"></script>
+    <script src="{{ asset('js/jserror.js') }}"></script>
+    <script src="{{ asset('js/antispam.js') }}"></script>
+    <!--<script src="{{ asset('js/owl.carousel.min.js') }}"></script>-->
+    <!--<script src="{{ asset('js/imagelightbox.js') }}"></script>-->
+    <!--<script src="{{ asset('js/fonctionlightbox.js') }}"></script>-->
+    <!--<script src="{{ asset('js/respond.js') }}"></script>-->
+    <!--<script src="{{ asset('js/jquery.cookiesdirective.js') }}"></script>-->
+    <!--<script src="{{ asset('js/cookies.js') }}"></script>-->
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    <!--<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}" media="all"/>-->
+    <!--<link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}" media="all"/>-->
+    <!--<link rel="stylesheet" href="{{ asset('css/owl.transitions.css') }}" media="all"/>-->
+    <!--<link rel="stylesheet" href="{{ asset('font-awesome-4.3.0/css/font-awesome.min.css') }}" media="all"/>-->
+    <!--<link rel="stylesheet" href="{{ asset('css/imagelightbox.css') }}" media="all"/>-->
+    <!--<link rel="stylesheet" href="{{ asset('css/foundation.css') }}" media="all"/>-->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="all"/>
+
+    <link href="{{ asset('css/site/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/site/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/site/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/site/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/site/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/site/responsive.css') }}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <!--[if IE]>
+    <style media="screen">
+        .myhr {
+            margin: -0.45em 0
+        }
+    </style>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <meta http-equiv="imagetoolbar" content="no"/>
+    <![endif]-->
+</head>
+<body class="homepage">
+{% block body %}
+    <header id="header">
+        {% block header %}
+            {% include 'PointWebAppBundle::_header.html.twig' %}
+        {% endblock %}
+        <h1 title="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|getRef('h1Title') }}">{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|getRef('h1') }}</h1>
+    </header>
+
+        {% block slider %}
+            {% include 'PointWebAppBundle::_slider.html.twig' %}
+        {% endblock %}
+
+
+        <noscript>
+            <dl id="jserror">
+                <dt>Attention</dt>
+                <dd>Si vous souhaitez utiliser pleinement toutes les capacités de ce site Internet vous devez activer
+                    javascript dans votre
+                    navigateur
+                </dd>
+            </dl>
+        </noscript>
+        {% block content %}
+
+        {% endblock %}
+
+{% endblock %}
+<footer id="footer" class="midnight-blue">
+    {% block footer %}
+        {{ render(controller('PointWebAppBundle:Default:footer')) }}
+    {% endblock %}
+</footer>
+<div id="scrollToTop"><a href="#">&#9650;</a></div>
+{% block javascripts %}
+    <script src="{{ asset('js/site/jquery.js') }}"></script>
+    <script src="{{ asset('js/site/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/site/jquery.prettyPhoto.js') }}"></script>
+    <script src="{{ asset('js/site/jquery.isotope.min.js') }}"></script>
+    <script src="{{ asset('js/site/main.js') }}"></script>
+    <script src="{{ asset('js/site/wow.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>
