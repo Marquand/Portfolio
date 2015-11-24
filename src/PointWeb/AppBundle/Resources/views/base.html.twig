@@ -61,8 +61,7 @@
         {% block header %}
             {% include 'PointWebAppBundle::_header.html.twig' %}
         {% endblock %}
-        <h1 title="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|getRef('h1Title') }}">{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|getRef('h1') }}</h1>
-    </header>
+       </header>
 
         {% block slider %}
             {% include 'PointWebAppBundle::_slider.html.twig' %}
