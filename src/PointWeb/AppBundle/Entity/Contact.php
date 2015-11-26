@@ -40,13 +40,6 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
-     */
-    private $phone;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="email", type="string", length=255)
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
@@ -54,20 +47,6 @@ class Contact
      * )
      */
     private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=255)
-     */
-    private $address;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="zip_code", type="string", length=255)
-     */
-    private $zipCode;
 
     /**
      * @var string
@@ -155,29 +134,6 @@ class Contact
     }
 
     /**
-     * Set phone
-     *
-     * @param string $phone
-     * @return Contact
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
      * Set email
      *
      * @param string $email
@@ -200,51 +156,6 @@ class Contact
         return $this->email;
     }
 
-    /**
-     * Set address
-     *
-     * @param string $address
-     * @return Contact
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set zipCode
-     *
-     * @param string $zipCode
-     * @return Contact
-     */
-    public function setZipCode($zipCode)
-    {
-        $this->zipCode = $zipCode;
-
-        return $this;
-    }
-
-    /**
-     * Get zipCode
-     *
-     * @return string 
-     */
-    public function getZipCode()
-    {
-        return $this->zipCode;
-    }
 
     /**
      * Set city

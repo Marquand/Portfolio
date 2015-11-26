@@ -16,28 +16,24 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('lastname', 'text', array(
-                "label" => "Nom :"
+                "label" => "Nom :",
+                "attr" => array('placeholder' => "Nom")
             ))
             ->add('firstname', 'text', array(
-                "label" => "Prénom :"
-            ))
-            ->add('phone', 'text', array(
-                "label" => "Téléphone :"
+                "label" => "Prénom :",
+                "attr" => array('placeholder' => "Prénom")
             ))
             ->add('email', 'text', array(
-                "label" => "Email :"
-            ))
-            ->add('address', 'text', array(
-                "label" => "Adresse :"
-            ))
-            ->add('zipCode', 'text', array(
-                "label" => "Code postal :"
+                "label" => "Email :",
+                "attr" => array('placeholder' => "Email")
             ))
             ->add('city', 'text', array(
-                "label" => "Ville :"
+                "label" => "Ville :",
+                "attr" => array('placeholder' => "Ville")
             ))
             ->add('message', 'textarea', array(
-                "label" => "Message :"
+                "label" => "Message :",
+                "attr" => array('placeholder' => "Message")
             ));
     }
 

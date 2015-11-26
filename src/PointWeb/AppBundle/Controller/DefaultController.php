@@ -16,9 +16,49 @@ use Symfony\Component\Serializer\Serializer;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->render('PointWebAppBundle:Default:index.html.twig');
+
+        $status = 0;
+        $questions = $this->captcha();
+
+        $entity = new Contact();
+        $form = $this->createForm(new ContactType(), $entity, array(
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Envoyer'));
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Contact site')
+                    ->setFrom($entity->getEmail())
+                    ->setTo($this->container->getParameter('mail_to'))
+                    ->setBody($this->renderView('PointWebAppBundle:Mail:contact.txt.twig', array(
+                        'entity' => $entity
+                    )));
+                $this->get('mailer')->send($message);
+
+                return $this->redirect($this->generateUrl('point_web_app_thanks'));
+        }
+
+
+        $request->getSession()->set('id_question', array_rand($questions, 1)); //je genere une question aléatoire
+
+        if ($status == 0) {
+            return $this->render('PointWebAppBundle:Default:index.html.twig', array(
+                'entity' => $entity,
+                'form' => $form->createView(),
+                'question' => $questions[$request->getSession()->get('id_question')]['question'],
+                'captcha' => $request->get('captcha') ? $request->get('captcha') : ""
+            ));
+        }
     }
 
     public function legalAction()
